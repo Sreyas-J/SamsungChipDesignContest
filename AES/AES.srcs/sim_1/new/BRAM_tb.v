@@ -1,37 +1,42 @@
-module ram_tb #(parameter RAM_DEPTH = 267);
+//module ram_tb;
+//    reg clk, ena, enb, wea, web;
+//    reg [8:0] addra, addrb;
+//    reg [127:0] dia, dib;
+//    wire [127:0] doa, dob;
 
-    reg clk;
-    reg write_enable;
-    reg [8:0] address;         // Address width adjusted to 9 bits for 512 addresses
-    reg [127:0] data_in;       // 128-bit data input (not used in read mode)
-    wire [127:0] data_out;     // 128-bit data output
+//    ram uut (
+//        .clk(clk),
+//        .ena(ena),
+//        .enb(enb),
+//        .wea(wea),
+//        .web(web),
+//        .addra(addra),
+//        .addrb(addrb),
+//        .dia(dia),
+//        .doa(doa),
+//        .dib(dib),
+//        .dob(dob)
+//    );
 
-    // Instantiate the RAM module
-    ram uut (
-        .clk(clk),
-        .write_enable(write_enable),
-        .address(address),
-        .data_in(data_in),
-        .data_out(data_out)
-    );
+//    initial begin
+//        // Load memory contents at simulation time
+//        $readmemh("/home/dell/Desktop/IIITB/5thSem/FPGA/VivadoProjects/FPGA_project/image128.txt", uut.ram);
+//    end
 
-    // Clock generation
-    always #10 clk = ~clk;
+//    always #5 clk = ~clk; // Clock generation
 
-    // Testbench logic
-    initial begin
-        // Initialize signals
-        clk = 0;
-        write_enable = 0; // No writing, only reading
-        #200
+//    initial begin
+//        clk = 0;
+//        ena = 1;
+//        enb = 1;
+//        wea = 0;
+//        web = 0;
+//        addra = 265;
+//        addrb = 1;
 
-        for (address = 0; address < RAM_DEPTH; address = address + 1) begin
-            #20;  // Wait for one clock cycle for each read operation
-            $display("Address: %d, Data Out: %h", address, data_out);
-        end
-
-        // End simulation after reading all addresses
-        $finish;
-    end
-
-endmodule
+//        #10;
+//        $display("RAM[2]: %h", doa);
+//        #10;
+//        $finish;
+//    end
+//endmodule
